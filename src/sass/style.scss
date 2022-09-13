@@ -2,6 +2,10 @@
 @import '_vars.scss';
 @import '../../node_modules/normalize.css/normalize.css';
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	overflow-x: hidden;
 	font-family: 'Kalam', sans-serif;
@@ -116,17 +120,17 @@ body {
 .quote__progress {
 	position: absolute;
 	left: 5px;
-	bottom: 1px;
-	width: calc(100% - 10px);
+	bottom: 0px;
+	width: calc(100% - 15px);
 	height: 5px;
 	background: #fff;
 	border-radius: 20px;
-  animation: progress 15s linear;
+	animation: progress 15s linear;
 }
 
 @keyframes progress {
 	0% {
-		width: 100%;
+		width: calc(100% - 15px);
 	}
 
 	100% {
@@ -178,5 +182,68 @@ body {
 	}
 	100% {
 		transform: rotate(360deg);
+	}
+}
+
+@media (max-width: 991px) {
+	.container {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.quote__inner {
+		padding: 30px 20px;
+	}
+
+	.quote__text {
+		font-size: 48px;
+	}
+
+	.quote__author {
+		font-size: 36px;
+		margin-bottom: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+	.quote__inner {
+		padding: 30px 10px;
+	}
+
+	.quote__text {
+		font-size: 36px;
+	}
+
+	.quote__author {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+
+	.btn {
+		font-size: 21px;
+	}
+}
+
+@media (max-width: 480px) {
+	.container {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.quote__inner {
+		padding: 20px 5px;
+	}
+
+	.quote__text {
+		font-size: 32px;
+	}
+
+	.quote__author {
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+
+	.btn {
+		font-size: 18px;
 	}
 }

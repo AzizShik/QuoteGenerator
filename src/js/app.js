@@ -8,6 +8,7 @@ import {
   loader,
   progressBar
 } from './DOMElements.js';
+import '../vendor/typetura.min.js';
 
 function tweetQuote() {
   const quote = quoteText.innerText;
@@ -53,11 +54,8 @@ async function createQuote() {
   }
 }
 
-function progressBar() {
-
-}
 
 createQuote();
 nextBtn.addEventListener('click', createQuote);
 twitterBtn.addEventListener('click', tweetQuote);
-progressBar.addEventListener('animationend', createQuote)
+progressBar.addEventListener('animationend', createQuote);

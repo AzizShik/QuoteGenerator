@@ -170,6 +170,10 @@ template, [hidden] {
   font-weight: 700;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Kalam, sans-serif;
   font-size: 18px;
@@ -276,19 +280,19 @@ body {
 }
 
 .quote__progress {
-  width: calc(100% - 10px);
+  width: calc(100% - 15px);
   height: 5px;
   background: #fff;
   border-radius: 20px;
   animation: progress 15s linear;
   position: absolute;
-  bottom: 1px;
+  bottom: 0;
   left: 5px;
 }
 
 @keyframes progress {
   0% {
-    width: 100%;
+    width: calc(100% - 15px);
   }
 
   100% {
@@ -346,6 +350,69 @@ body {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .quote__inner {
+    padding: 30px 20px;
+  }
+
+  .quote__text {
+    font-size: 48px;
+  }
+
+  .quote__author {
+    margin-bottom: 50px;
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .quote__inner {
+    padding: 30px 10px;
+  }
+
+  .quote__text {
+    font-size: 36px;
+  }
+
+  .quote__author {
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+
+  .btn {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .quote__inner {
+    padding: 20px 5px;
+  }
+
+  .quote__text {
+    font-size: 32px;
+  }
+
+  .quote__author {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 18px;
   }
 }
 
