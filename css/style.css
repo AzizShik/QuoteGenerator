@@ -1,18 +1,28 @@
-@import '_fonts.scss';
-@import '_vars.scss';
-@import '../../node_modules/normalize.css/normalize.css';
-
+@import '../vendor/normalize.css';
+@font-face {
+	font-family: 'Kalam';
+	src: url('../fonts/Kalam-Regular.woff') format('woff');
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Kalam';
+	src: url('../fonts/Kalam-Light.woff') format('woff');
+	font-weight: 300;
+}
+@font-face {
+	font-family: 'Kalam';
+	src: url('../fonts/Kalam-Bold.woff') format('woff');
+	font-weight: 700;
+}
 * {
 	box-sizing: border-box;
 }
-
 body {
 	overflow-x: hidden;
 	font-family: 'Kalam', sans-serif;
 	font-size: 18px;
 	font-weight: 400;
 }
-
 .quote {
 	position: relative;
 	background-image: url('../img/bg.jpg');
@@ -20,12 +30,10 @@ body {
 	background-repeat: no-repeat;
 	background-position: center center;
 	min-height: 100vh;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 .quote:before {
 	content: '';
 	position: absolute;
@@ -34,7 +42,6 @@ body {
 	z-index: 10;
 	background: rgba(0, 0, 0, 0.7);
 }
-
 .container {
 	max-width: 1200px;
 	padding-left: 20px;
@@ -43,10 +50,9 @@ body {
 	position: relative;
 	z-index: 100;
 }
-
 .btn {
 	padding: 7px 21px;
-	background-color: $btn;
+	background-color: #2e2121;
 	border: none;
 	font-size: 18px;
 	box-shadow: 0 3px 6px rgba(255, 255, 255, 0.16),
@@ -57,11 +63,9 @@ body {
 	transition: all 0.3s ease;
 	cursor: pointer;
 }
-
 .quote {
-	color: $fontColor;
+	color: #fff;
 }
-
 .quote__inner {
 	position: relative;
 	min-height: 250px;
@@ -70,12 +74,11 @@ body {
 	max-width: 800px;
 	border-radius: 20px;
 	width: 100%;
-	background-color: $quote;
+	background-color: #3c3a39;
 	padding: 30px;
 	box-shadow: 0 3px 6px rgba(255, 255, 255, 0.16),
 		0 3px 6px rgba(255, 255, 255, 0.23);
 }
-
 .quote__text {
 	font-weight: 300;
 	font-size: 64px;
@@ -84,39 +87,32 @@ body {
 	margin-bottom: 25px;
 	text-align: center;
 }
-
 .quote__author {
 	font-size: 48px;
 	font-weight: 700;
 	text-align: center;
 	margin-bottom: 70px;
 }
-
 .quote__bottom {
 	margin-top: auto;
 	display: flex;
 	justify-content: space-between;
 }
-
 .quote__twitter i {
 	transition: all 0.3s ease;
 }
-
 @media (hover: hover) {
 	.btn:hover {
 		box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19),
 			0 6px 6px rgba(255, 255, 255, 0.23);
 	}
-
 	.quote__twitter:hover i {
-		color: $twitterColor;
+		color: #1da1f2;
 	}
 }
-
 .btn:active {
 	transform: translate(2px, 1px) scale(0.95);
 }
-
 .quote__progress {
 	position: absolute;
 	left: 5px;
@@ -127,24 +123,20 @@ body {
 	border-radius: 20px;
 	animation: progress 15s linear;
 }
-
 @keyframes progress {
 	0% {
 		width: calc(100% - 15px);
 	}
-
 	100% {
 		width: 0;
 	}
 }
-
 .loader {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 1000;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -184,65 +176,52 @@ body {
 		transform: rotate(360deg);
 	}
 }
-
 @media (max-width: 991px) {
 	.container {
 		padding-left: 10px;
 		padding-right: 10px;
 	}
-
 	.quote__inner {
 		padding: 30px 20px;
 	}
-
 	.quote__text {
 		font-size: 48px;
 	}
-
 	.quote__author {
 		font-size: 36px;
 		margin-bottom: 50px;
 	}
 }
-
 @media (max-width: 767px) {
 	.quote__inner {
 		padding: 30px 10px;
 	}
-
 	.quote__text {
 		font-size: 36px;
 	}
-
 	.quote__author {
 		font-size: 24px;
 		margin-bottom: 30px;
 	}
-
 	.btn {
 		font-size: 21px;
 	}
 }
-
 @media (max-width: 480px) {
 	.container {
 		padding-left: 5px;
 		padding-right: 5px;
 	}
-
 	.quote__inner {
 		padding: 20px 5px;
 	}
-
 	.quote__text {
 		font-size: 32px;
 	}
-
 	.quote__author {
 		font-size: 20px;
 		margin-bottom: 15px;
 	}
-
 	.btn {
 		font-size: 18px;
 	}
