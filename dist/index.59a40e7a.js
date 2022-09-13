@@ -533,30 +533,51 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"8lRBv":[function(require,module,exports) {
 var _styleScss = require("../sass/style.scss");
+const quoteContainer = document.querySelector(".container");
 const twitterBtn = document.querySelector(".quote__twitter");
 const quoteText = document.querySelector(".quote__text");
 const quoteAuthor = document.querySelector(".quote__author");
 const nextBtn = document.querySelector(".quote__next");
+const loader = document.querySelector(".loader");
 function tweetQuote() {
     const quote = quoteText.innerText;
     const author = quoteAuthor.innerText;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
     window.open(twitterUrl, "_blank");
 }
+function loading() {
+    loader.style.display = "block";
+    quoteContainer.style.display = "none";
+}
+function complete() {
+    if (loader.style.display === "block") {
+        loader.style.display = "none";
+        quoteContainer.style.display = "block";
+    }
+}
 twitterBtn.addEventListener("click", tweetQuote);
 async function getRandomQuote() {
-    const resp = await fetch("https://api.quotable.io/random");
-    const data = await resp.json();
-    return data;
+    try {
+        const resp = await fetch("https://api.quotable.io/random");
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 async function createQuote() {
-    const data = await getRandomQuote();
-    quoteText.innerText = `“${data.content}”`;
-    quoteAuthor.innerText = data.author;
-    console.log(data);
+    loading();
+    try {
+        const data = await getRandomQuote();
+        quoteText.innerText = `“${data.content}”`;
+        quoteAuthor.innerText = data.author;
+        complete();
+    } catch (error) {
+        console.log(error);
+    }
 }
-createQuote();
 nextBtn.addEventListener("click", createQuote);
+createQuote();
 
 },{"../sass/style.scss":"fpeeO"}],"fpeeO":[function() {},{}]},["7ZoMj","8lRBv"], "8lRBv", "parcelRequire3429")
 
