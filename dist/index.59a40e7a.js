@@ -533,29 +533,23 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"8lRBv":[function(require,module,exports) {
 var _styleScss = require("../sass/style.scss");
-const quoteContainer = document.querySelector(".container");
-const twitterBtn = document.querySelector(".quote__twitter");
-const quoteText = document.querySelector(".quote__text");
-const quoteAuthor = document.querySelector(".quote__author");
-const nextBtn = document.querySelector(".quote__next");
-const loader = document.querySelector(".loader");
+var _domelementsJs = require("./DOMElements.js");
 function tweetQuote() {
-    const quote = quoteText.innerText;
-    const author = quoteAuthor.innerText;
+    const quote = (0, _domelementsJs.quoteText).innerText;
+    const author = (0, _domelementsJs.quoteAuthor).innerText;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
     window.open(twitterUrl, "_blank");
 }
 function loading() {
-    loader.style.display = "block";
-    quoteContainer.style.display = "none";
+    (0, _domelementsJs.loader).style.display = "block";
+    (0, _domelementsJs.quoteContainer).style.display = "none";
 }
 function complete() {
-    if (loader.style.display === "block") {
-        loader.style.display = "none";
-        quoteContainer.style.display = "block";
+    if ((0, _domelementsJs.loader).style.display === "block") {
+        (0, _domelementsJs.loader).style.display = "none";
+        (0, _domelementsJs.quoteContainer).style.display = "block";
     }
 }
-twitterBtn.addEventListener("click", tweetQuote);
 async function getRandomQuote() {
     try {
         const resp = await fetch("https://api.quotable.io/random");
@@ -569,16 +563,67 @@ async function createQuote() {
     loading();
     try {
         const data = await getRandomQuote();
-        quoteText.innerText = `“${data.content}”`;
-        quoteAuthor.innerText = data.author;
+        (0, _domelementsJs.quoteText).innerText = `“${data.content}”`;
+        (0, _domelementsJs.quoteAuthor).innerText = data.author;
         complete();
     } catch (error) {
         console.log(error);
     }
 }
-nextBtn.addEventListener("click", createQuote);
+function progressBar() {}
 createQuote();
+(0, _domelementsJs.nextBtn).addEventListener("click", createQuote);
+(0, _domelementsJs.twitterBtn).addEventListener("click", tweetQuote);
+(0, _domelementsJs.progressBar).addEventListener("animationend", createQuote);
 
-},{"../sass/style.scss":"fpeeO"}],"fpeeO":[function() {},{}]},["7ZoMj","8lRBv"], "8lRBv", "parcelRequire3429")
+},{"../sass/style.scss":"fpeeO","./DOMElements.js":"jEnie"}],"fpeeO":[function() {},{}],"jEnie":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "quoteContainer", ()=>quoteContainer);
+parcelHelpers.export(exports, "twitterBtn", ()=>twitterBtn);
+parcelHelpers.export(exports, "quoteText", ()=>quoteText);
+parcelHelpers.export(exports, "quoteAuthor", ()=>quoteAuthor);
+parcelHelpers.export(exports, "nextBtn", ()=>nextBtn);
+parcelHelpers.export(exports, "loader", ()=>loader);
+parcelHelpers.export(exports, "progressBar", ()=>progressBar);
+const quoteContainer = document.querySelector(".container");
+const twitterBtn = document.querySelector(".quote__twitter");
+const quoteText = document.querySelector(".quote__text");
+const quoteAuthor = document.querySelector(".quote__author");
+const nextBtn = document.querySelector(".quote__next");
+const loader = document.querySelector(".loader");
+const progressBar = document.querySelector(".quote__progress");
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}]},["7ZoMj","8lRBv"], "8lRBv", "parcelRequire3429")
 
 //# sourceMappingURL=index.59a40e7a.js.map

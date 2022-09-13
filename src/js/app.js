@@ -1,11 +1,13 @@
 import '../sass/style.scss'
-
-const quoteContainer = document.querySelector('.container');
-const twitterBtn = document.querySelector('.quote__twitter');
-const quoteText = document.querySelector('.quote__text');
-const quoteAuthor = document.querySelector('.quote__author');
-const nextBtn = document.querySelector('.quote__next');
-const loader = document.querySelector('.loader');
+import {
+  quoteContainer,
+  twitterBtn,
+  quoteText,
+  quoteAuthor,
+  nextBtn,
+  loader,
+  progressBar
+} from './DOMElements.js';
 
 function tweetQuote() {
   const quote = quoteText.innerText;
@@ -26,7 +28,6 @@ function complete() {
   }
 }
 
-twitterBtn.addEventListener('click', tweetQuote);
 
 async function getRandomQuote() {
   try {
@@ -37,6 +38,8 @@ async function getRandomQuote() {
     console.log(error)
   }
 }
+
+
 
 async function createQuote() {
   loading();
@@ -50,5 +53,11 @@ async function createQuote() {
   }
 }
 
-nextBtn.addEventListener('click', createQuote);
+function progressBar() {
+
+}
+
 createQuote();
+nextBtn.addEventListener('click', createQuote);
+twitterBtn.addEventListener('click', tweetQuote);
+progressBar.addEventListener('animationend', createQuote)

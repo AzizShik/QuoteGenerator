@@ -275,6 +275,27 @@ body {
   transform: translate(2px, 1px)scale(.95);
 }
 
+.quote__progress {
+  width: calc(100% - 10px);
+  height: 5px;
+  background: #fff;
+  border-radius: 20px;
+  animation: progress 15s linear;
+  position: absolute;
+  bottom: 1px;
+  left: 5px;
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
 .loader {
   z-index: 1000;
   justify-content: center;
