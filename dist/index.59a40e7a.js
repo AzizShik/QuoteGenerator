@@ -533,6 +533,16 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"8lRBv":[function(require,module,exports) {
 var _styleScss = require("../sass/style.scss");
+const twitterBtn = document.querySelector(".quote__twitter");
+const quoteText = document.querySelector(".quote__text");
+const quoteAuthor = document.querySelector(".quote__author");
+function tweetQuote() {
+    const quote = quoteText.innerText;
+    const author = quoteAuthor.innerText;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+    window.open(twitterUrl, "_blank");
+}
+twitterBtn.addEventListener("click", tweetQuote);
 
 },{"../sass/style.scss":"fpeeO"}],"fpeeO":[function() {},{}]},["7ZoMj","8lRBv"], "8lRBv", "parcelRequire3429")
 
