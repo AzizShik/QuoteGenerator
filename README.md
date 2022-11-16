@@ -19,7 +19,7 @@ You can also share a quote on Twitter.
 ### The base project covered:
 
 - Querying, Manipulating the DOM
-- Handling DOM Events
+- Handling DOM Eventsе 
 - Fetch API
 - Twitter API
 - Font Awesome
